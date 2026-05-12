@@ -146,7 +146,7 @@ func (ods *objectDecodeState) callbackRun(ds *decodeState) {
 // As the graph is being serialized, a set of completion callbacks are
 // executed. These completion callbacks should form a set of acyclic subgraphs
 // over the original one. After decoding is complete, the objects are scanned
-// to ensure that all callbacks are executed, otherwise the callback graph was
+// to ensure that all callbacks are executed; otherwise, the callback graph was
 // not acyclic.
 type decodeState struct {
 	// ctx is the decode context.

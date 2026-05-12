@@ -447,7 +447,7 @@ TEST(BasicPtyTest, OpenDevTTY) {
 }
 
 TEST(BasicPtyTest, OpenDevTTYNoCTTY) {
-  // Become session leader, otherwise we will never have hope of setting a
+  // Become session leader; otherwise, we will never have hope of setting a
   // controlling terminal. This test verifies that we fail to open /dev/tty for
   // other (expected) reasons.
   setsid();

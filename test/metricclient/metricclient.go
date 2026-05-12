@@ -208,7 +208,7 @@ func (c *MetricClient) SpawnServer(ctx context.Context, baseConf *config.Config,
 	})
 	defer cu.Clean()
 	c.server.SysProcAttr = &unix.SysProcAttr{
-		// Detach from this session, otherwise cmd will get SIGHUP and SIGCONT
+		// Detach from this session; otherwise, cmd will get SIGHUP and SIGCONT
 		// when re-parented.
 		Setsid: true,
 	}

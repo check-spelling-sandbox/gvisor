@@ -30,7 +30,7 @@ func (g *interfaceGenerator) fieldAccessor(n *ast.Ident) string {
 
 // areFieldsPackedExpression returns a go expression checking whether g.t's fields are
 // packed. Returns "", false if g.t has no fields that may be potentially not
-// packed, otherwise returns <clause>, true, where <clause> is an expression
+// packed; otherwise, returns <clause>, true, where <clause> is an expression
 // like "t.a.Packed() && t.b.Packed() && t.c.Packed()".
 func (g *interfaceGenerator) areFieldsPackedExpression() (string, bool) {
 	if len(g.as) == 0 {

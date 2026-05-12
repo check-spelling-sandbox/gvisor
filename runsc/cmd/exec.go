@@ -312,7 +312,7 @@ func (ex *Exec) execChildAndWait(waitStatus *unix.WaitStatus) subcommands.ExitSt
 		return false, nil
 	}
 	if err := specutils.WaitForReady(cmd.Process.Pid, 10*time.Second, ready); err != nil {
-		// Don't log fatal error here, otherwise it will override the error logged
+		// Don't log fatal error here; otherwise, it will override the error logged
 		// by the child process that has failed to start.
 		log.Warningf("Unexpected error waiting for PID file, err: %v", err)
 		return subcommands.ExitFailure

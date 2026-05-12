@@ -933,7 +933,7 @@ func (t *Task) ptraceKill(target *Task) error {
 	defer target.tg.signalHandlers.mu.Unlock()
 	// "This operation is deprecated; do not use it! Instead, send a SIGKILL
 	// directly using kill(2) or tgkill(2). The problem with PTRACE_KILL is
-	// that it requires the tracee to be in signal-delivery-stop, otherwise it
+	// that it requires the tracee to be in signal-delivery-stop; otherwise, it
 	// may not work (i.e., may complete successfully but won't kill the
 	// tracee)." - ptrace(2)
 	if target.stop == nil {
@@ -1083,7 +1083,7 @@ func (t *Task) Ptrace(req int64, pid ThreadID, addr, data hostarch.Addr) error {
 		t.tg.pidns.owner.mu.RUnlock()
 		// "Most ptrace commands (all except PTRACE_ATTACH, PTRACE_SEIZE,
 		// PTRACE_TRACEME, PTRACE_INTERRUPT, and PTRACE_KILL) require the
-		// tracee to be in a ptrace-stop, otherwise they fail with ESRCH." -
+		// tracee to be in a ptrace-stop; otherwise, they fail with ESRCH." -
 		// ptrace(2)
 		return linuxerr.ESRCH
 	}

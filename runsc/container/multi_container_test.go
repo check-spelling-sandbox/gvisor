@@ -1387,7 +1387,7 @@ func TestMultiContainerDifferentFilesystems(t *testing.T) {
 	conf.RootDir = rootDir
 
 	// Make sure overlay is enabled, and none of the root filesystems are
-	// read-only, otherwise we won't be able to create the file.
+	// read-only; otherwise, we won't be able to create the file.
 	conf.Overlay2.Set("all:memory")
 	specs, ids := createSpecs(cmdRoot, cmd, cmd)
 	for _, s := range specs {
@@ -2749,7 +2749,7 @@ func TestMultiContainerMemoryLeakStress(t *testing.T) {
 		cmds = append(cmds, createFsTree)
 	}
 	testSpecs, ids := createSpecs(cmds...)
-	// Make sure none of the root filesystems are read-only, otherwise we won't
+	// Make sure none of the root filesystems are read-only; otherwise, we won't
 	// be able to create the file.
 	for _, s := range testSpecs {
 		s.Root.Readonly = false

@@ -319,7 +319,7 @@ func (d *commData) Write(ctx context.Context, _ *vfs.FileDescription, src userme
 		return 0, err
 	}
 
-	// Only allow writes from the same thread group, otherwise return
+	// Only allow writes from the same thread group; otherwise, return
 	// EINVAL. See fs/proc/base.c:comm_write.
 	//
 	// Note that this check exists in addition to the same-thread-group

@@ -525,7 +525,7 @@ func (r *Route) DefaultTTL() uint8 {
 	return r.outgoingNIC.getNetworkEndpoint(r.NetProto()).DefaultTTL()
 }
 
-// MTU returns the MTU of the route if present, otherwise the MTU of the underlying network endpoint.
+// MTU returns the MTU of the route if present; otherwise, the MTU of the underlying network endpoint.
 func (r *Route) MTU() uint32 {
 	if r.mtu > 0 {
 		// r.mtu is already adjusted to account for IP headers. See makeRouteInner.

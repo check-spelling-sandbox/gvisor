@@ -459,7 +459,7 @@ func (t *Task) findReparentTargetLocked() *Task {
 		}
 		if parent.tg.isChildSubreaper {
 			// We found a subreaper process. Return a non-exiting
-			// task if there is one, otherwise keep walking up the
+			// task if there is one; otherwise, keep walking up the
 			// process tree.
 			if target := parent.tg.anyNonExitingTaskLocked(); target != nil {
 				return target

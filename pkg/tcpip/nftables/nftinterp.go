@@ -977,7 +977,7 @@ func checkOperationBrackets(tokens []string, lnIdx int) *syserr.AnnotatedError {
 }
 
 // parseUint8 parses the uint8 which should be supposed from the given string.
-// Input starting with "0x" are parsed as base 16, otherwise assumes base 10.
+// Input starting with "0x" are parsed as base 16; otherwise, assumes base 10.
 func parseUint8(regString string, supposed string, lnIdx int, tkIdx int) (uint8, *syserr.AnnotatedError) {
 	var v64 uint64
 	var err error

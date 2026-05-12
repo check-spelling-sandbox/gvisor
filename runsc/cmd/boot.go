@@ -316,7 +316,7 @@ func (b *Boot) Execute(_ context.Context, f *flag.FlagSet, args ...any) subcomma
 
 	argOverride := make(map[string]string)
 
-	// Do these before chroot takes effect, otherwise we can't read /proc and /sys.
+	// Do these before chroot takes effect; otherwise, we can't read /proc and /sys.
 	if len(b.productName) == 0 {
 		if product, err := os.ReadFile("/sys/devices/virtual/dmi/id/product_name"); err != nil {
 			log.Warningf("Not setting product_name: %v", err)
@@ -380,7 +380,7 @@ func (b *Boot) Execute(_ context.Context, f *flag.FlagSet, args ...any) subcomma
 	}
 
 	// Get the spec from the specFD. We *must* keep this os.File alive past
-	// the call setCapsAndCallSelf, otherwise the FD will be closed and the
+	// the call setCapsAndCallSelf; otherwise, the FD will be closed and the
 	// child process cannot read it
 	specFile := os.NewFile(uintptr(b.specFD), "spec file")
 	spec, err := specutils.ReadSpecFromFile(b.bundleDir, specFile, conf)

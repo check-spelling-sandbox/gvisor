@@ -251,7 +251,7 @@ func PostRestore(k *kernel.Kernel, timeline *timing.Timeline) error {
 // binary specified by k.SaveRestoreExecConfig and waits for it to finish.
 //
 // Precondition: The kernel should be running; k.SetSaveRestoreExecConfig should
-// be setup with an argv, otherwise this function is a no-op.
+// be setup with an argv; otherwise, this function is a no-op.
 func SaveRestoreExec(k *kernel.Kernel, mode SaveRestoreExecMode) error {
 	if k.SaveRestoreExecConfig == nil {
 		return nil

@@ -1393,7 +1393,7 @@ func TestGroupStateNonMember(t *testing.T) {
 }
 
 // TestMakeAllNonMemberCancelsDelayedReportJob tests that the delayed report job
-// is cancelled on MakeAllNonMember, otherwise the job will panic if the endpoint
+// is cancelled on MakeAllNonMember; otherwise, the job will panic if the endpoint
 // is disabled.
 func TestMakeAllNonMemberCancelsDelayedReportJob(t *testing.T) {
 	const maxRespCode = 1

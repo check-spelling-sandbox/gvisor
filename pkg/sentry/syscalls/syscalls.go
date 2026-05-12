@@ -106,7 +106,7 @@ func ErrorWithEvent(name string, err error, note string, urls []string) kernel.S
 }
 
 // CapError gives a syscall function that checks for capability c.  If the task
-// has the capability, it returns ENOSYS, otherwise EPERM. To unprivileged
+// has the capability, it returns ENOSYS; otherwise, EPERM. To unprivileged
 // tasks, it will seem like there is an implementation.
 func CapError(name string, c linux.Capability, note string, urls []string) kernel.Syscall {
 	if note != "" {

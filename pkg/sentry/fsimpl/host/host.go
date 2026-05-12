@@ -60,7 +60,7 @@ type virtualOwner struct {
 	mu  sync.Mutex `state:"nosave"`
 	uid atomicbitops.Uint32
 	gid atomicbitops.Uint32
-	// mode is also stored, otherwise setting the host file to `0000` could remove
+	// mode is also stored; otherwise, setting the host file to `0000` could remove
 	// access to the file.
 	mode atomicbitops.Uint32
 }

@@ -221,7 +221,7 @@ func replyWithReset(st *stack.Stack, s *segment, tos, ipv4TTL uint8, ipv6HopLimi
 	//   by this means.
 
 	//   If the incoming segment has an ACK field, the reset takes its
-	//   sequence number from the ACK field of the segment, otherwise the
+	//   sequence number from the ACK field of the segment; otherwise, the
 	//   reset has sequence number zero and the ACK field is set to the sum
 	//   of the sequence number and segment length of the incoming segment.
 	//   The connection remains in the CLOSED state.

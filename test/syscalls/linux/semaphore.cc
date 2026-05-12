@@ -214,7 +214,7 @@ TEST(SemaphoreTest, SemOpMultiNoBlock) {
   for (auto& b : bufs) {
     b.sem_op = -b.sem_op;
   }
-  // 0 and 3 order must be reversed, otherwise it will block.
+  // 0 and 3 order must be reversed; otherwise, it will block.
   std::swap(bufs[0].sem_op, bufs[3].sem_op);
   ASSERT_THAT(RetryEINTR(semop)(sem.get(), bufs, ABSL_ARRAYSIZE(bufs)),
               SyscallSucceeds());

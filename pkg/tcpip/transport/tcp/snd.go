@@ -281,7 +281,7 @@ func initSender(ep *Endpoint, iss, irs seqnum.Value, sndWnd seqnum.Size, mss uin
 	ep.snd.lr = ep.snd.initLossRecovery()
 	ep.snd.rc.init(ep.snd, iss)
 
-	// A negative sndWndScale means that no scaling is in use, otherwise we
+	// A negative sndWndScale means that no scaling is in use; otherwise, we
 	// store the scaling value.
 	if sndWndScale > 0 {
 		ep.snd.SndWndScale = uint8(sndWndScale)

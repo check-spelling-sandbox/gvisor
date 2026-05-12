@@ -279,7 +279,7 @@ func runtimeMap() (map[string]any, error) {
 
 // Save exports a container image to the given Writer.
 //
-// Note that the writer should be actively consuming the output, otherwise it
+// Note that the writer should be actively consuming the output; otherwise, it
 // is not guaranteed that the Save will make any progress and the call may
 // stall indefinitely.
 //

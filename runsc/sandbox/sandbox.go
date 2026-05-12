@@ -914,7 +914,7 @@ func (s *Sandbox) createSandboxProcess(conf *config.Config, args *Args, startSyn
 	// Relay all the config flags to the sandbox process.
 	cmd := exec.Command(specutils.ExePath, conf.ToFlags()...)
 	cmd.SysProcAttr = &unix.SysProcAttr{
-		// Detach from this session, otherwise cmd will get SIGHUP and SIGCONT
+		// Detach from this session; otherwise, cmd will get SIGHUP and SIGCONT
 		// when re-parented.
 		Setsid: true,
 	}
@@ -1176,7 +1176,7 @@ func (s *Sandbox) createSandboxProcess(conf *config.Config, args *Args, startSyn
 
 	// The current process' stdio must be passed to the application via the
 	// --stdio-fds flag. The stdio of the sandbox process itself must not
-	// be connected to the same FDs, otherwise we risk leaking sandbox
+	// be connected to the same FDs; otherwise, we risk leaking sandbox
 	// errors to the application, so we set the sandbox stdio to nil,
 	// causing them to read/write from the null device.
 	cmd.Stdin = nil

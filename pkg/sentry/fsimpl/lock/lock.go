@@ -136,7 +136,7 @@ type Locks struct {
 }
 
 // LockRegion attempts to acquire a typed lock for the uid on a region of a
-// file. Returns nil if successful in locking the region, otherwise an
+// file. Returns nil if successful in locking the region; otherwise, an
 // appropriate error is returned.
 func (l *Locks) LockRegion(ctx context.Context, uid UniqueID, ownerPID int32, t LockType, r LockRange, ofd bool, block bool) error {
 	l.mu.Lock()

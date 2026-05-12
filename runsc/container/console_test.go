@@ -364,7 +364,7 @@ func TestJobControlSignalExec(t *testing.T) {
 // Test that job control signals work on a console created with "run -ti".
 func TestJobControlSignalRootContainer(t *testing.T) {
 	conf := testutil.TestConfig(t)
-	// Don't let bash execute from profile or rc files, otherwise our PID
+	// Don't let bash execute from profile or rc files; otherwise, our PID
 	// counts get messed up.
 	spec := testutil.NewSpecWithArgs("/bin/bash", "--noprofile", "--norc")
 	spec.Process.Terminal = true
@@ -422,7 +422,7 @@ func TestJobControlSignalRootContainer(t *testing.T) {
 	}
 
 	// Start waiting for the container to exit in a goroutine. We do this
-	// very early, otherwise it might exit before we have a chance to call
+	// very early; otherwise, it might exit before we have a chance to call
 	// Wait.
 	var (
 		ws unix.WaitStatus
@@ -508,7 +508,7 @@ func TestMultiContainerTerminal(t *testing.T) {
 			defer cleanup()
 			conf.RootDir = rootDir
 
-			// Don't let bash execute from profile or rc files, otherwise our PID
+			// Don't let bash execute from profile or rc files; otherwise, our PID
 			// counts get messed up.
 			bash := []string{"/bin/bash", "--noprofile", "--norc"}
 			testSpecs, ids := createSpecs(bash, bash)
