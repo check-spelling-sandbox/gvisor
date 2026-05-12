@@ -209,8 +209,8 @@ command. The session definition has 3 main parts:
         remote process cannot be reached.
 
 The session configuration above can also be used with the `--pod-init-config`
-flag under the `"trace_session"` JSON object. There is a full example
-[here](https://cs.opensource.google/gvisor/gvisor/+/master:examples/seccheck/pod_init.json)
+flag under the `"trace_session"` JSON object. There is a [full
+example](https://cs.opensource.google/gvisor/gvisor/+/master:examples/seccheck/pod_init.json)
 
 > Note: For convenience, the `--pod-init-config` file can also be used with
 > `runsc trace create` command. The portions of the Pod init config file that
