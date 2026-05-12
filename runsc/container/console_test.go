@@ -118,7 +118,7 @@ func receiveConsolePTY(srv *unet.ServerSocket) (*os.File, error) {
 	return os.NewFile(uintptr(fds[0]), "pty_master"), nil
 }
 
-// Test that an pty FD is sent over the console socket if one is provided.
+// Test that a pty FD is sent over the console socket if one is provided.
 func TestConsoleSocket(t *testing.T) {
 	for name, conf := range configs(t, false /* noOverlay */) {
 		t.Run(name, func(t *testing.T) {
@@ -160,7 +160,7 @@ func TestConsoleSocket(t *testing.T) {
 	}
 }
 
-// Test that an pty FD is sent over the console socket if one is provided.
+// Test that a pty FD is sent over the console socket if one is provided.
 func TestMultiContainerConsoleSocket(t *testing.T) {
 	for name, conf := range configs(t, false /* noOverlay */) {
 		t.Run(name, func(t *testing.T) {

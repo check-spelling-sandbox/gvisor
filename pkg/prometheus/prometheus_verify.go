@@ -349,7 +349,7 @@ func (p *numberPacker) mustUnpackInt(n packedNumber) int64 {
 }
 
 // mustUnpackFloat unpacks a floating-point number.
-// It panics if the packedNumber is not an floating-point number.
+// It panics if the packedNumber is not a floating-point number.
 func (p *numberPacker) mustUnpackFloat(n packedNumber) float64 {
 	num := p.unpack(n)
 	if *num == zero {

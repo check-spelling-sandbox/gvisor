@@ -1544,7 +1544,7 @@ func (k *Kernel) SendExternalSignal(info *linux.SignalInfo, context string) {
 	k.sendExternalSignal(info, context)
 }
 
-// SendExternalSignalThreadGroup injects a signal into an specific ThreadGroup.
+// SendExternalSignalThreadGroup injects a signal into a specific ThreadGroup.
 //
 // This function doesn't skip signals like SendExternalSignal does.
 func (k *Kernel) SendExternalSignalThreadGroup(tg *ThreadGroup, info *linux.SignalInfo) error {

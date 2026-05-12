@@ -1127,7 +1127,7 @@ func parseCmpOp(copString string, lnIdx int, tkIdx int) (int, *syserr.AnnotatedE
 	return cop, nil
 }
 
-// parseUint8PlusChar parses the a uint8 followed by the given character from
+// parseUint8PlusChar parses a uint8 followed by the given character from
 // the given string.
 func parseUint8PlusChar(numString string, char byte, lnIdx int, tkIdx int) (uint8, *syserr.AnnotatedError) {
 	lastChar := numString[len(numString)-1]

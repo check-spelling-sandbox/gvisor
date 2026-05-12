@@ -3845,7 +3845,7 @@ func TestAutoGenAddrFiniteToInfiniteToFiniteVL(t *testing.T) {
 		t.Error(err)
 	}
 
-	// Receive an new RA with prefix with infinite VL.
+	// Receive a new RA with prefix with infinite VL.
 	e.InjectInbound(header.IPv6ProtocolNumber, raBufWithPI(llAddr2, 0, prefix, true, true, infiniteVLSeconds, 0))
 	if err := addrDisp.expectLifetimesChanged(addressLifetimes(clock.NowMonotonic(), 0, infiniteVLSeconds)); err != nil {
 		t.Error(err)
@@ -3971,7 +3971,7 @@ func TestAutoGenAddrValidLifetimeUpdates(t *testing.T) {
 				t.Error(err)
 			}
 
-			// Receive an new RA with prefix with new VL,
+			// Receive a new RA with prefix with new VL,
 			// test.nvl.
 			e.InjectInbound(header.IPv6ProtocolNumber, raBufWithPI(llAddr2, 0, prefix, true, true, test.nvl, 0))
 			if test.evl != test.ovl {

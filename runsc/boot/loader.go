@@ -1565,7 +1565,7 @@ func (l *Loader) waitContainer(cid string, waitStatus *uint32) error {
 			// The container has restored, we *should* have found the init process...
 			return fmt.Errorf("could not find init process of restored container %q in state %q", cid, state)
 		case restoreFailed:
-			// If restore failed, we should return the a non-zero exit status here to
+			// If restore failed, we should return a non-zero exit status here to
 			// indicate that the container failed and transition to "stopped" state.
 			log.Warningf("Restore failed, returning from waitContainer with non-zero exit status")
 			*waitStatus = 1

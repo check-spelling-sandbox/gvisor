@@ -518,7 +518,7 @@ func BytesToIPAddress(addr []byte) tcpip.Address {
 	return tcpip.AddrFromSlice(addr)
 }
 
-// AddressAndFamily reads an sockaddr struct from the given address and
+// AddressAndFamily reads a sockaddr struct from the given address and
 // converts it to the FullAddress format. It supports AF_INET, AF_INET6, and
 // AF_PACKET addresses.
 //

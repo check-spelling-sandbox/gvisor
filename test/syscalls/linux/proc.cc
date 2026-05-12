@@ -274,7 +274,7 @@ PosixError AccessWhileRunning(std::function<std::string(int pid)> name,
       nullptr, nullptr);
 }
 
-// Access the file returned by name when the a subprocess is zombied.
+// Access the file returned by name when a subprocess is zombied.
 PosixError AccessWhileZombied(std::function<std::string(int pid)> name,
                               int flags, std::function<void(int fd)> access) {
   FileDescriptor fd;
@@ -292,7 +292,7 @@ PosixError AccessWhileZombied(std::function<std::string(int pid)> name,
       nullptr);
 }
 
-// Access the file returned by name when the a subprocess is exited.
+// Access the file returned by name when a subprocess is exited.
 PosixError AccessWhileExited(std::function<std::string(int pid)> name,
                              int flags, std::function<void(int fd)> access) {
   FileDescriptor fd;

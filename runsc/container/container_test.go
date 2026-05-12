@@ -907,7 +907,7 @@ func TestExec(t *testing.T) {
 				})
 			}
 
-			// Test for exec failure with an non-existent file.
+			// Test for exec failure with a non-existent file.
 			t.Run("nonexist", func(t *testing.T) {
 				// b/179114837 found by Syzkaller that causes nil pointer panic when
 				// trying to dec-ref an unix socket FD.

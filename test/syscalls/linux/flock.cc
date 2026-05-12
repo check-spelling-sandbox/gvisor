@@ -194,7 +194,7 @@ TEST_F(FlockTest, TestSharedLockFailExclusiveHolderNonblocking) {
   const FileDescriptor fd =
       ASSERT_NO_ERRNO_AND_VALUE(Open(test_file_name_, O_RDWR));
 
-  // Verify we're unable to get an shared lock via the second FD.
+  // Verify we're unable to get a shared lock via the second FD.
   // because someone is holding an exclusive lock.
   ASSERT_THAT(flock(fd.get(), LOCK_SH | LOCK_NB),
               SyscallFailsWithErrno(EWOULDBLOCK));
