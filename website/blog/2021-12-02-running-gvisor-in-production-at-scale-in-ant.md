@@ -141,7 +141,7 @@ platform. According to the analysis, the overhead mainly comes from:
 
 Can we save the structural cost of syscall interception? This cost is actually
 by-design. We can optimize it, for example, avoid allocation and map operations
-in switch process, but it can not be eliminated.
+in switch process, but it cannot be eliminated.
 
 Does the structural cost of syscall interception really matter? It depends on
 the syscall rate. Most applications in our case have a syscall rate < 200K/sec,

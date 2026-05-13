@@ -112,7 +112,7 @@ var (
 	ENOTUNIQ        = errors.New(errno.ENOTUNIQ, "name not unique on network")
 	EBADFD          = errors.New(errno.EBADFD, "file descriptor in bad state")
 	EREMCHG         = errors.New(errno.EREMCHG, "remote address changed")
-	ELIBACC         = errors.New(errno.ELIBACC, "can not access a needed shared library")
+	ELIBACC         = errors.New(errno.ELIBACC, "cannot access a needed shared library")
 	ELIBBAD         = errors.New(errno.ELIBBAD, "accessing a corrupted shared library")
 	ELIBSCN         = errors.New(errno.ELIBSCN, ".lib section in a.out corrupted")
 	ELIBMAX         = errors.New(errno.ELIBMAX, "attempting to link in too many shared libraries")

@@ -598,7 +598,7 @@ func (fs *filesystem) AccessAt(ctx context.Context, rp *vfs.ResolvingPath, creds
 		return linuxerr.EROFS
 	}
 	if !d.upperVD.Ok() && !d.canBeCopiedUp() {
-		// A lower layer file that can not be copied up, can not be written to.
+		// A lower layer file that cannot be copied up, cannot be written to.
 		// Error out here. Don't give the application false hopes.
 		return linuxerr.EACCES
 	}

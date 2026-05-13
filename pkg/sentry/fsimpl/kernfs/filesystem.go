@@ -1145,7 +1145,7 @@ func (fs *Filesystem) IsDescendant(vfsroot, vd vfs.VirtualDentry) bool {
 func (fs *Filesystem) deferDecRefVD(ctx context.Context, vd vfs.VirtualDentry) {
 	if d, ok := vd.Dentry().Impl().(*Dentry); ok && d.fs == fs {
 		// The following is equivalent to vd.DecRef(ctx). This is needed
-		// because if d belongs to this filesystem, we can not DecRef it right
+		// because if d belongs to this filesystem, we cannot DecRef it right
 		// away as we may be holding fs.mu. d.DecRef may acquire fs.mu. So we
 		// defer the DecRef to when locks are dropped.
 		vd.Mount().DecRef(ctx)

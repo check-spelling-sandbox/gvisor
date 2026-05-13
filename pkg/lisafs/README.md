@@ -64,7 +64,7 @@ each node. Server must provide the following concurrency guarantees:
 
 Some things that follow:
 
--   Read guarantee on a node `A` also guarantees that the client can not
+-   Read guarantee on a node `A` also guarantees that the client cannot
     invalidate any node on the path from root to `A`. To invalidate a node, the
     client must delete it. To delete any intermediate node (directory) up until
     `A`, the client must first delete all children of that directory including
@@ -117,7 +117,7 @@ after some arbitrary limit has been reached.
 A communicator may also be capable of sending open file descriptors to the peer
 endpoint. This can be done with SCM_RIGHTS ancillary messages over a socket.
 Hence forth, this is called “donating an FD”. FD donation of course is an
-inter-process mechanism and can not be done if the client and server are on
+inter-process mechanism and cannot be done if the client and server are on
 different hosts. But donating FDs enables clients to make staggering
 optimizations for IO-intensive workloads and avoid a lot of RPC round-trips and
 buffer management overheads. The usage of the donated FDs can be monitored using
@@ -148,7 +148,7 @@ type sockHeader struct {
 }
 ```
 
-The socket communicator is only capable of making synchronous RPCs. It can not
+The socket communicator is only capable of making synchronous RPCs. It cannot
 be used to make multiple RPCs concurrently. One client thread should acquire
 this socket communicator, send a request to the server, block until the response
 is received and only then release it. An alternative approach would be to add a
@@ -165,7 +165,7 @@ The channel communicator is inspired from gVisor’s flipcall package
 Procedure Calls between mutually-distrusting processes”. In this communicator,
 both ends (server and client) own a flipcall endpoint. Flipcall endpoints can
 “switch” to the other endpoint synchronously and yield control, hence enabling
-synchronous RPCs. For this reason, channel communicators can not accommodate
+synchronous RPCs. For this reason, channel communicators cannot accommodate
 asynchronous RPCs.
 
 This communicator uses a shared memory region between both flipcall endpoints
@@ -278,11 +278,11 @@ paths.
 MID | Message      | Request         | Response                                                           | Description
 --- | ------------ | --------------- | ------------------------------------------------------------------ | -----------
 0   | Error        | N/A             | ErrorResp                                                          | Returned from server to indicate error while handling RPC. If Error is returned, the failed RPC should have no side effects. Any intermediate changes made should be rolled back. This is a response-only message. ErrorResp.errno should be interpreted as a Linux error code.
-1   | Mount        |                 | MountResp<br><br>Optionally donates: \[mountPointHostFD\]          | Mount establishes a connection. MountResp.root is a Control FD for the mountpoint, which becomes the root for this connection. The location of the connection’s mountpoint on the server is predetermined as per sandbox configuration. Clients can not request to mount the connection at a certain path, unlike mount(2). MountResp.maxMessageSize dictates the maximum message size the server can tolerate across all communicators. This limit does not include the communicator’s header size. MountResp.supportedMs contains all the MIDs that the server supports. Clients can use this information for checking feature support. The server must provide a read concurrency guarantee on the root node during this operation.
+1   | Mount        |                 | MountResp<br><br>Optionally donates: \[mountPointHostFD\]          | Mount establishes a connection. MountResp.root is a Control FD for the mountpoint, which becomes the root for this connection. The location of the connection’s mountpoint on the server is predetermined as per sandbox configuration. Clients cannot request to mount the connection at a certain path, unlike mount(2). MountResp.maxMessageSize dictates the maximum message size the server can tolerate across all communicators. This limit does not include the communicator’s header size. MountResp.supportedMs contains all the MIDs that the server supports. Clients can use this information for checking feature support. The server must provide a read concurrency guarantee on the root node during this operation.
 2   | Channel      |                 | ChannelResp<br><br>Donates: \[dataFD, fdSock\]                     | Channel sets up a new communicator based on a shared memory region between the client and server. dataFD is the host FD for the shared memory file. fdSock is a host socket FD that the server will use to donate FDs over this channel. ChannelResp’s dataOffset and dataLength describe the shared memory file region owned by this channel. No concurrency guarantees are needed. ENOMEM is returned to indicate that the server hit the max channels limit.
 3   | FStat        | StatReq         | [struct statx](https://man7.org/linux/man-pages/man2/statx.2.html) | Fstat is analogous to fstat(2). It returns struct statx for the file represented by StatReq.fd. FStat may be called on a Control FD or Open FD. The server must provide a read concurrency guarantee on the file node during this operation.
 4   | SetStat      | SetStatReq      | SetStatResp                                                        | SetStat does not correspond to any particular syscall. It serves the purpose of fchmod(2), fchown(2), ftruncate(2) and futimesat(2) in one message. This enables client-side optimizations where the client is able to change multiple attributes in 1 RPC. It must be called on Control FDs only. One instance where this is helpful is in overlayfs implementation which requires changing multiple attributes at the same time. The failure of setting one attribute does not terminate the entire operation. SetStatResp.failureMask should be interpreted as stx\_mask and indicates all attributes that failed to be modified. In case failureMask != 0, SetStatResp.failiureErrno indicates any one of the failure errnos. The server must provide a write concurrency guarantee on the file node during this operation.
-5   | Walk         | WalkReq         | WalkResp                                                           | Walk walks multiple path components described by WalkReq.path starting from Control FD WalkReq.dirFD. The walk must terminate if a path component is a symlink or a path component does not exist and return all the inodes walked so far. The reason for premature termination of walk is indicated via WalkResp.status. Symlinks can not be walked on the server. The client must Readlink the symlink and rewalk its target + the remaining path. The server must provide a read concurrency guarantee on the directory node being walked and should protect against renames during the entire walk.
+5   | Walk         | WalkReq         | WalkResp                                                           | Walk walks multiple path components described by WalkReq.path starting from Control FD WalkReq.dirFD. The walk must terminate if a path component is a symlink or a path component does not exist and return all the inodes walked so far. The reason for premature termination of walk is indicated via WalkResp.status. Symlinks cannot be walked on the server. The client must Readlink the symlink and rewalk its target + the remaining path. The server must provide a read concurrency guarantee on the directory node being walked and should protect against renames during the entire walk.
 6   | WalkStat     | WalkReq         | WalkStatResp                                                       | WalkStat is similar to Walk, except that it only returns the statx results for the path components. It does not return a Control FD for each path component. Additionally, if the first element of WalkReq.path is an empty string, WalkStat also returns the statx results for WalkReq.dirFD. This is useful in scenarios where the client already has the Control FDs for a path but just needs statx results to revalidate its state. The server must provide a read concurrency guarantee on the directory node being walked and should protect against renames during the entire walk.
 7   | OpenAt       | OpenAtReq       | OpenAtResp<br><br>Optionally donates: \[openHostFD\]               | OpenAt is analogous to openat(2). It creates an Open FD on the Control FD OpenAtReq.fd using OpenAtReq.flags. The server may donate a host FD opened with the same flags. The client can directly make syscalls on this FD, instead of making RPCs as an optimization. The server must provide a read concurrency guarantee on the file node during this operation.
 8   | OpenCreateAt | OpenCreateAtReq | OpenCreateAtResp<br><br>Optionally donates: \[openHostFD\]         | OpenCreateAt is analogous to openat(2) with flags that include O\_CREAT

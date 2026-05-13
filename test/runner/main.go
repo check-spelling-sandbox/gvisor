@@ -879,7 +879,7 @@ func setupHostConnectorTree(spec *specs.Spec) (cleanup func(), err error) {
 		Source:      connectorDir,
 		Type:        "bind",
 	})
-	// We can not create individual attach points for sockets that have not been
+	// We cannot create individual attach points for sockets that have not been
 	// created yet.
 	spec.Process.Env = append(spec.Process.Env, "TEST_CONNECTOR_TREE=/tmp/connectors")
 	return cleanup, nil

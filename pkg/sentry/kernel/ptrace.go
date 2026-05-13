@@ -473,7 +473,7 @@ func (t *Task) ptraceTraceme() error {
 		return linuxerr.EPERM
 	}
 	if t.parent == nil {
-		// In Linux, only init can not have a parent, and init is assumed never
+		// In Linux, only init cannot have a parent, and init is assumed never
 		// to invoke PTRACE_TRACEME. In the sentry, TGID 1 is an arbitrary user
 		// application that may invoke PTRACE_TRACEME; having no parent can
 		// also occur if all tasks in the parent thread group have exited, and

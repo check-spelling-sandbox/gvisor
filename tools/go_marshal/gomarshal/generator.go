@@ -396,7 +396,7 @@ func (g *Generator) generateOne(t *marshallableType, fset *token.FileSet) *inter
 			abortAt(fset.Position(t.slice.comment.Slash), "Slice API is not supported for dynamic types because it assumes that each slice element is statically sized.")
 		}
 		if t.boundCheck {
-			abortAt(fset.Position(t.slice.comment.Slash), "Can not generate Checked methods for dynamic types. Has to be implemented manually.")
+			abortAt(fset.Position(t.slice.comment.Slash), "Cannot generate Checked methods for dynamic types. Has to be implemented manually.")
 		}
 		// No validation needed, assume the user knows what they are doing.
 		i.emitMarshallableForDynamicType()
