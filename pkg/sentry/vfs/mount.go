@@ -815,7 +815,7 @@ func (vfs *VirtualFilesystem) umountTreeLocked(mnt *Mount, opts *umountRecursive
 			if vfs.shouldUmount(mnt, opts) {
 				vfs.disconnectLocked(mnt)
 			} else {
-				// Restore mnt in it's parent children list with a reference, but leave
+				// Restore mnt in its parent children list with a reference, but leave
 				// it marked as unmounted. These partly unmounted mounts are cleaned up
 				// in vfs.forgetDeadMountpoints and Mount.destroy. We keep the extra
 				// reference on the mount but remove a reference on the mount point so
