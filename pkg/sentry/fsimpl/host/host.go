@@ -166,7 +166,7 @@ type inode struct {
 	queue waiter.Queue
 
 	// virtualOwner caches ownership and permission information to override the
-	// underlying file owner and permission. This is used to allow the unstrusted
+	// underlying file owner and permission. This is used to allow the untrusted
 	// application to change these fields without affecting the host.
 	virtualOwner virtualOwner
 
