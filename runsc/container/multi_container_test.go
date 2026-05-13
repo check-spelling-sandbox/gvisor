@@ -3137,7 +3137,7 @@ func TestMultiContainerCgroupsMemoryUsage(t *testing.T) {
 				t.Fatalf("error killing container %q: %v", containers[1].ID, err)
 			}
 			if _, err := containers[1].Wait(); err != nil {
-				t.Fatalf("error waiting forcontainer %q: %v", containers[1].ID, err)
+				t.Fatalf("error waiting for container %q: %v", containers[1].ID, err)
 			}
 
 			newUsageTotal, err := containers[0].Sandbox.CgroupsReadControlFile(ctrlRoot)
