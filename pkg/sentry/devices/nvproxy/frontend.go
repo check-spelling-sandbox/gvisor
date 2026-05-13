@@ -1020,7 +1020,7 @@ func ctrlRegisterVASpace(fi *frontendIoctlState, ioctlParams *nvgpu.NVOS54_PARAM
 	n, err := rmControlInvoke(fi, ioctlParams, &ctrlParams)
 	if err == nil && ioctlParams.Status == nvgpu.NV_OK {
 		// src/nvidia/src/kernel/gpu/bus/third_party_p2p.c:CliAddThirdPartyP2PVASpace()
-		// => refAddDependant()
+		// => refAddDependent()
 		client.objAddDep(ioctlParams.HObject, ctrlParams.HVASpace)
 	}
 	unlock()
@@ -1110,8 +1110,8 @@ func rmAlloc(fi *frontendIoctlState) (uintptr, error) {
 	// ("External Class") to the type of pAllocParms ("Alloc Param Info") and
 	// the class whose constructor interprets it ("Internal Class").
 	// - Add symbol and parameter type definitions to //pkg/abi/nvgpu.
-	// - Check constructor for calls to refAddDependant(),
-	// sessionAddDependant(), or sessionAddDependency(), which need to be
+	// - Check constructor for calls to refAddDependent(),
+	// sessionAddDependent(), or sessionAddDependency(), which need to be
 	// mirrored by dependencies in the call to nvproxy.objAddLocked().
 	// - Add handling below.
 	result, err := fi.fd.dev.nvp.abi.allocationClass[ioctlParams.HClass].handle(fi, &ioctlParams, isNVOS64)
@@ -1258,7 +1258,7 @@ func rmAllocMemoryVirtual(fi *frontendIoctlState, ioctlParams *nvgpu.NVOS64_PARA
 	return rmAllocSimpleParams(fi, ioctlParams, isNVOS64, func(fi *frontendIoctlState, client *rootClient, ioctlParams *nvgpu.NVOS64_PARAMETERS, rightsRequested nvgpu.RS_ACCESS_MASK, allocParams *nvgpu.NV_MEMORY_VIRTUAL_ALLOCATION_PARAMS) {
 		// See
 		// src/nvidia/src/kernel/mem_mgr/virt_mem_range.c:vmrangeConstruct_IMPL()
-		// => refAddDependant().
+		// => refAddDependent().
 		hvaSpace := allocParams.HVASpace
 		if allocParams.HVASpace.Val == nvgpu.NV_MEMORY_VIRTUAL_SYSMEM_DYNAMIC_HVASPACE {
 			// hvaSpace is not added as a dependency when it is
@@ -1274,7 +1274,7 @@ func rmAllocSMDebuggerSession(fi *frontendIoctlState, ioctlParams *nvgpu.NVOS64_
 	return rmAllocSimpleParams(fi, ioctlParams, isNVOS64, func(fi *frontendIoctlState, client *rootClient, ioctlParams *nvgpu.NVOS64_PARAMETERS, rightsRequested nvgpu.RS_ACCESS_MASK, allocParams *nvgpu.NV83DE_ALLOC_PARAMETERS) {
 		// Compare
 		// src/nvidia/src/kernel/gpu/gr/kernel_sm_debugger_session.c:ksmdbgssnConstruct_IMPL()
-		// => _ShareDebugger() => sessionAddDependency/sessionAddDependant();
+		// => _ShareDebugger() => sessionAddDependency/sessionAddDependent();
 		// the driver indirects through a per-KernelGraphicsObject
 		// RmDebuggerSession, which we elide for dependency tracking.
 		fi.fd.dev.nvp.objAdd(fi.ctx, client, ioctlParams.HObjectNew, ioctlParams.HClass, newRmAllocObject(fi.fd, ioctlParams, rightsRequested, allocParams), ioctlParams.HObjectParent, allocParams.HClass3DObject)
@@ -1285,7 +1285,7 @@ func rmAllocContextDMA(fi *frontendIoctlState, ioctlParams *nvgpu.NVOS64_PARAMET
 	return rmAllocSimpleParams(fi, ioctlParams, isNVOS64, func(fi *frontendIoctlState, client *rootClient, ioctlParams *nvgpu.NVOS64_PARAMETERS, rightsRequested nvgpu.RS_ACCESS_MASK, allocParams *nvgpu.NV_CONTEXT_DMA_ALLOCATION_PARAMS) {
 		// See
 		// src/nvidia/src/kernel/gpu/mem_mgr/context_dma.c:ctxdmaConstruct_IMPL()
-		// => refAddDependant().
+		// => refAddDependent().
 		fi.fd.dev.nvp.objAdd(fi.ctx, client, ioctlParams.HObjectNew, ioctlParams.HClass, newRmAllocObject(fi.fd, ioctlParams, rightsRequested, allocParams), ioctlParams.HObjectParent, allocParams.HMemory)
 	})
 }
@@ -1294,7 +1294,7 @@ func rmAllocChannelGroup(fi *frontendIoctlState, ioctlParams *nvgpu.NVOS64_PARAM
 	return rmAllocSimpleParams(fi, ioctlParams, isNVOS64, func(fi *frontendIoctlState, client *rootClient, ioctlParams *nvgpu.NVOS64_PARAMETERS, rightsRequested nvgpu.RS_ACCESS_MASK, allocParams *nvgpu.NV_CHANNEL_GROUP_ALLOCATION_PARAMETERS) {
 		// See
 		// src/nvidia/src/kernel/gpu/fifo/kernel_channel_group_api.c:kchangrpapiConstruct_IMPL()
-		// => refAddDependant().
+		// => refAddDependent().
 		fi.fd.dev.nvp.objAdd(fi.ctx, client, ioctlParams.HObjectNew, ioctlParams.HClass, newRmAllocObject(fi.fd, ioctlParams, rightsRequested, allocParams), ioctlParams.HObjectParent, allocParams.HVASpace)
 		// Note: When the channel group's engine type is GR, which is always
 		// true unless MIG is enabled, kchangrpapiConstruct_IMPL() constructs a
@@ -1312,7 +1312,7 @@ func rmAllocChannel(fi *frontendIoctlState, ioctlParams *nvgpu.NVOS64_PARAMETERS
 	return rmAllocSimpleParams(fi, ioctlParams, isNVOS64, func(fi *frontendIoctlState, client *rootClient, ioctlParams *nvgpu.NVOS64_PARAMETERS, rightsRequested nvgpu.RS_ACCESS_MASK, allocParams *nvgpu.NV_CHANNEL_ALLOC_PARAMS) {
 		// See
 		// src/nvidia/src/kernel/gpu/fifo/kernel_channel.c:kchannelConstruct_IMPL()
-		// => refAddDependant(). The channel's parent may be a device or
+		// => refAddDependent(). The channel's parent may be a device or
 		// channel group; if it is a channel group then the channel depends on
 		// it via the parent relationship, and if it is not a channel group
 		// then kchannelConstruct_IMPL() constructs one internally and frees it
@@ -1333,7 +1333,7 @@ func rmAllocContextShare(fi *frontendIoctlState, ioctlParams *nvgpu.NVOS64_PARAM
 	return rmAllocSimpleParams(fi, ioctlParams, isNVOS64, func(fi *frontendIoctlState, client *rootClient, ioctlParams *nvgpu.NVOS64_PARAMETERS, rightsRequested nvgpu.RS_ACCESS_MASK, allocParams *nvgpu.NV_CTXSHARE_ALLOCATION_PARAMETERS) {
 		// See
 		// src/nvidia/src/kernel/gpu/fifo/kernel_ctxshare.c:kctxshareapiConstruct_IMPL()
-		// => refAddDependant(). The context share's parent is the channel
+		// => refAddDependent(). The context share's parent is the channel
 		// group, so (given that we are representing graphics context
 		// dependencies as channel group dependencies) no separate dependency
 		// is required.
