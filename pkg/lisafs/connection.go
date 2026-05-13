@@ -32,7 +32,7 @@ import (
 //
 // Each connection is set up using a unix domain socket. One end is owned by
 // the server and the other end is owned by the client. The connection may
-// spawn additional comunicational channels for the same mount for increased
+// spawn additional communication channels for the same mount for increased
 // RPC concurrency.
 //
 // Reference model:
