@@ -357,7 +357,7 @@ type FDMapping struct {
 
 // Args are the arguments for New().
 type Args struct {
-	// Id is the sandbox ID.
+	// ID is the sandbox ID.
 	ID string
 	// Spec is the sandbox specification.
 	Spec *specs.Spec
