@@ -600,7 +600,7 @@ func (vfs *VirtualFilesystem) BindAt(ctx context.Context, creds *auth.Credential
 		vfs.delayDecRef(mp) // +checklocksforce
 	})
 	defer cleanup.Clean()
-	// Namespace mounts can be binded to other mount points.
+	// Namespace mounts can be bound to other mount points.
 	fsName := sourceVd.mount.Filesystem().FilesystemType().Name()
 	if !vfs.validInMountNS(ctx, sourceVd.mount) && fsName != nsfsName && fsName != cgroupFsName {
 		return linuxerr.EINVAL
