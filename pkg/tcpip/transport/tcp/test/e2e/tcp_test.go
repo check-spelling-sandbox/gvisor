@@ -6832,7 +6832,7 @@ func TestSynRcvdBadSeqNumber(t *testing.T) {
 	// complete the connection to test that the large SEQ num
 	// did not change the state from SYN-RCVD.
 
-	// Get setup to be notified about connection establishment.
+	// Get set up to be notified about connection establishment.
 	we, ch := waiter.NewChannelEntry(waiter.ReadableEvents)
 	c.WQ.EventRegister(&we)
 	defer c.WQ.EventUnregister(&we)

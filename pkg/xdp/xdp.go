@@ -206,7 +206,7 @@ func NewFromSocket(sockfd int, ifaceIdx, queueID uint32, opts Opts) (*ControlBlo
 	cleanup.Add(func() {
 		memutil.UnmapSlice(fillQueueMem)
 	})
-	// Setup the fillQueue with offsets into allocated memory.
+	// Set up the fillQueue with offsets into allocated memory.
 	cb.Fill = FillQueue{
 		mem:            fillQueueMem,
 		mask:           opts.NDescriptors - 1,
@@ -229,7 +229,7 @@ func NewFromSocket(sockfd int, ifaceIdx, queueID uint32, opts Opts) (*ControlBlo
 	cleanup.Add(func() {
 		memutil.UnmapSlice(completionQueueMem)
 	})
-	// Setup the completionQueue with offsets into allocated memory.
+	// Set up the completionQueue with offsets into allocated memory.
 	cb.Completion = CompletionQueue{
 		mem:  completionQueueMem,
 		mask: opts.NDescriptors - 1,
@@ -251,7 +251,7 @@ func NewFromSocket(sockfd int, ifaceIdx, queueID uint32, opts Opts) (*ControlBlo
 	cleanup.Add(func() {
 		memutil.UnmapSlice(rxQueueMem)
 	})
-	// Setup the rxQueue with offsets into allocated memory.
+	// Set up the rxQueue with offsets into allocated memory.
 	cb.RX = RXQueue{
 		mem:  rxQueueMem,
 		mask: opts.NDescriptors - 1,
@@ -273,7 +273,7 @@ func NewFromSocket(sockfd int, ifaceIdx, queueID uint32, opts Opts) (*ControlBlo
 	cleanup.Add(func() {
 		memutil.UnmapSlice(txQueueMem)
 	})
-	// Setup the txQueue with offsets into allocated memory.
+	// Set up the txQueue with offsets into allocated memory.
 	cb.TX = TXQueue{
 		sockfd:         uint32(sockfd),
 		mem:            txQueueMem,

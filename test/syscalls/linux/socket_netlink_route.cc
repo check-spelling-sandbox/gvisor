@@ -2468,7 +2468,7 @@ TEST(NetlinkRouteTest, LinkMulticastGroupUserToUserSend) {
       /*expect_nlmsgerr=*/true));
   ASSERT_TRUE(got_msg) << "Did not get a response from the kernel.";
 
-  // Now that we know the kernel has processed the message, setup a cleanup.
+  // Now that we know the kernel has processed the message, set up a cleanup.
   auto restore_mtu = Cleanup([&]() {
     MtuRequest mtu_request = GetMtuRequest(link, RTM_SETLINK, link.mtu);
     ASSERT_NO_ERRNO(NetlinkRequestAckOrError(nlsk_send, kSeq, &mtu_request,

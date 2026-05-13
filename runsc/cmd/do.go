@@ -305,7 +305,7 @@ func resolvePath(path string) (string, error) {
 // setupNet setups up the sandbox network, including the creation of a network
 // namespace, and iptable rules to redirect the traffic. Returns a cleanup
 // function to tear down the network. Returns errNoDefaultInterface when there
-// is no network interface available to setup the network.
+// is no network interface available to set up the network.
 func (c *Do) setupNet(cid string, spec *specs.Spec) (func(), error) {
 	dev, err := defaultDevice()
 	if err != nil {

@@ -3974,7 +3974,7 @@ func TestRejectMartianMappedPackets(t *testing.T) {
 				t.Fatalf("AddProtocolAddress(%d, %+v, {}): %s", nicID, protocolAddr, err)
 			}
 
-			// We don't have to setup the UDP header properly, as
+			// We don't have to set up the UDP header properly, as
 			// it should be rejected at the IP layer.
 			hdr := prependable.New(header.IPv6MinimumSize + header.UDPMinimumSize)
 			_ = header.UDP(hdr.Prepend(header.UDPMinimumSize))

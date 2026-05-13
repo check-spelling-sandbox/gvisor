@@ -171,7 +171,7 @@ func TestMultiContainerConsoleSocket(t *testing.T) {
 			defer cleanup()
 			conf.RootDir = rootDir
 
-			// Setup the containers.
+			// Set up the containers.
 			sleep := []string{"sleep", "100"}
 			tru := []string{"true"}
 			testSpecs, ids := createSpecs(sleep, tru)

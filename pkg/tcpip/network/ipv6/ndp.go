@@ -1136,7 +1136,7 @@ func (ndp *ndpState) doSLAAC(prefix tcpip.Subnet, pl, vl time.Duration) {
 		return
 	}
 
-	// Setup the initial jobs to deprecate and invalidate prefix.
+	// Set up the initial jobs to deprecate and invalidate prefix.
 
 	if pl < header.NDPInfiniteLifetime && pl != 0 {
 		state.deprecationJob.Schedule(pl)
