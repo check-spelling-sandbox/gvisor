@@ -414,7 +414,7 @@ func (dut *DUT) GetSockOptTimevalWithErrno(ctx context.Context, t *testing.T, so
 	return ret, timeval, errno
 }
 
-// GetSockOptTCPInfo retreives TCPInfo for the given socket descriptor.
+// GetSockOptTCPInfo retrieves TCPInfo for the given socket descriptor.
 func (dut *DUT) GetSockOptTCPInfo(t *testing.T, sockfd int32) linux.TCPInfo {
 	t.Helper()
 
@@ -425,7 +425,7 @@ func (dut *DUT) GetSockOptTCPInfo(t *testing.T, sockfd int32) linux.TCPInfo {
 	return info
 }
 
-// GetSockOptTCPInfoWithErrno retreives TCPInfo with any errno.
+// GetSockOptTCPInfoWithErrno retrieves TCPInfo with any errno.
 func (dut *DUT) GetSockOptTCPInfoWithErrno(ctx context.Context, t *testing.T, sockfd int32) (int32, linux.TCPInfo, error) {
 	t.Helper()
 
