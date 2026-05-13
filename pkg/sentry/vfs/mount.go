@@ -312,7 +312,7 @@ func (vfs *VirtualFilesystem) attachTreeLocked(ctx context.Context, mnt *Mount, 
 				if !pmnt.parent().neverConnected() {
 					pmnt.parent().ns.pending -= pmnt.countSubmountsLocked()
 				}
-				vfs.abortUncommitedMount(ctx, pmnt)
+				vfs.abortUncommittedMount(ctx, pmnt)
 			}
 			return err
 		}
@@ -525,7 +525,7 @@ func (vfs *VirtualFilesystem) cloneMountTree(ctx context.Context, mnt *Mount, ro
 			}
 			m, err := vfs.cloneMount(c, c.root, nil, cloneType)
 			if err != nil {
-				vfs.abortUncommitedMount(ctx, clone)
+				vfs.abortUncommittedMount(ctx, clone)
 				return nil, err
 			}
 			mp := VirtualDentry{
@@ -626,7 +626,7 @@ func (vfs *VirtualFilesystem) BindAt(ctx context.Context, creds *auth.Credential
 	vfs.delayDecRef(clone)
 	clone.locked = false
 	if err := vfs.attachTreeLocked(ctx, clone, mp); err != nil {
-		vfs.abortUncomittedChildren(ctx, clone)
+		vfs.abortUncommittedChildren(ctx, clone)
 		return err
 	}
 	return nil
