@@ -180,7 +180,7 @@ type subprocess struct {
 	// user mode.
 	contextQueue *contextQueue
 
-	// dead indicates whether the subprocess is alive or not.
+	// dead indicates whether or not the subprocess is alive.
 	dead atomicbitops.Bool
 }
 

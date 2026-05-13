@@ -222,7 +222,7 @@ type CallSite struct {
 	Resolved LinePosition
 }
 
-// IsValid indicates whether the CallSite is valid or not.
+// IsValid indicates whether or not the CallSite is valid.
 func (cs *CallSite) IsValid() bool {
 	return cs.LocalPos.IsValid()
 }

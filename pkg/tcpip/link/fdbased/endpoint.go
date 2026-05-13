@@ -205,7 +205,7 @@ type Options struct {
 	// disabled.
 	GSOMaxSize uint32
 
-	// GVisorGSOEnabled indicates whether Gvisor GSO is enabled or not.
+	// GVisorGSOEnabled indicates whether or not Gvisor GSO is enabled.
 	GVisorGSOEnabled bool
 
 	// PacketDispatchMode specifies the type of inbound dispatcher to be
