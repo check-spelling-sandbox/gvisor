@@ -49,7 +49,7 @@ RUN sed -i '/PIDFD_NS_USER,/d' pidfd_setns_test.c
 # Strip CLONE_NEWUSER from setns().
 RUN sed -i '/setns/ s/CLONE_NEWUSER[[:space:]]*|[[:space:]]*//g' pidfd_setns_test.c && \
     sed -i '/setns/ s/|[[:space:]]*CLONE_NEWUSER//g' pidfd_setns_test.c
-# Drop the no_foul_play() test alltogether, for it needs setns() with CLONE_NEWUSER.
+# Drop the no_foul_play() test altogether, for it needs setns() with CLONE_NEWUSER.
 RUN sed -i '/TEST_F(current_nsset, no_foul_play)/,/^}/ s/^/\/\//' pidfd_setns_test.c
 
 # Drop the test_pidfd_send_signal_recycled_pid_fail() test, for it takes long enough
