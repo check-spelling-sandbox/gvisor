@@ -748,7 +748,7 @@ func (fs *filesystem) MkdirAt(ctx context.Context, rp *vfs.ResolvingPath, opts v
 		} else if len(parent.lowerVDs) > 0 {
 			// If haveUpperWhiteout is false and the parent is merged, then we should
 			// apply an optimization. We know that nothing exists on the parent's
-			// lower layers. Otherwise doCreateAt() would have failed with EEXIST.
+			// lower layers. Otherwise, doCreateAt() would have failed with EEXIST.
 			// Mark the new directory opaque to avoid unnecessary lower lookups in
 			// fs.lookupLocked(). Allow it to fail since this is an optimization.
 			// See fs/overlayfs/dir.c:ovl_create_upper() -> ovl_set_opaque().

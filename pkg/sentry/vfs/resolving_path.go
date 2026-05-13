@@ -343,7 +343,7 @@ func (rp *ResolvingPath) ShouldFollowSymlink() bool {
 // HandleSymlink is called when the current path component is a symbolic link
 // to the given target. If the calling Filesystem method should continue path
 // traversal, HandleSymlink updates the path component stream to reflect the
-// symlink target and returns nil. Otherwise it returns a non-nil error. It
+// symlink target and returns nil. Otherwise, it returns a non-nil error. It
 // also returns whether the symlink was successfully followed, which can be
 // true even when a non-nil error like resolveAbsSymlinkError is returned.
 //

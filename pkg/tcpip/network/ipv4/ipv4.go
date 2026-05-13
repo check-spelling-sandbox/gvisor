@@ -1292,7 +1292,7 @@ func (e *endpoint) deliverPacketLocally(h header.IPv4, pkt *stack.PacketBuffer, 
 		//
 		// Note that this addition doesn't overflow even on 32bit architecture
 		// because pkt.Data().Size() should not exceed 65535 (the max IP datagram
-		// size). Otherwise the packet would've been rejected as invalid before
+		// size). Otherwise, the packet would've been rejected as invalid before
 		// reaching here.
 		if int(start)+pkt.Data().Size() > header.IPv4MaximumPayloadSize {
 			stats.ip.MalformedPacketsReceived.Increment()

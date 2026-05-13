@@ -251,7 +251,7 @@ func SetupMounts(conf *config.Config, mounts []specs.Mount, root, procPath strin
 		}
 		defer unix.Close(dstFD)
 		// Apply mount options after creating all mount points.
-		// Otherwise they can be remounted into read-only.
+		// Otherwise, they can be remounted into read-only.
 		defer func(dstFD int, flags uint32, dst string) {
 			path := fmt.Sprintf("/proc/self/fd/%d", dstFD)
 			// The gofer process doesn't execute anything natively.

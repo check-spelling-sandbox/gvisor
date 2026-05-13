@@ -914,7 +914,7 @@ func (fs *Filesystem) RmdirAt(ctx context.Context, rp *vfs.ResolvingPath) error 
 	// Linux sends the parent's IN_DELETE|IN_ISDIR at rmdir() time, but
 	// defers the child's IN_DELETE_SELF/IN_IGNORED until the last ref is
 	// dropped. A removed kernfs dentry keeps one tree ref until we drop it
-	// below, so refs==1 means no external refs remain. Otherwise defer to
+	// below, so refs==1 means no external refs remain. Otherwise, defer to
 	// cacheLocked(). HandleDeletion() is idempotent.
 	if child.refs.Load() == 1 {
 		child.inode.Watches().HandleDeletion(ctx)

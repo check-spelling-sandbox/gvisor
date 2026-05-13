@@ -2095,7 +2095,7 @@ func (e *Endpoint) GetSockOptInt(opt tcpip.SockOptInt) (int, tcpip.Error) {
 
 	case tcpip.MaxSegOption:
 		// Linux only returns user_mss value if user_mss is set and the socket is
-		// unconnected. Otherwise Linux returns the actual current MSS. Netstack
+		// unconnected. Otherwise, Linux returns the actual current MSS. Netstack
 		// mimics the user_mss behavior, but otherwise just returns the defaultMSS
 		// for now.
 		v := header.TCPDefaultMSS
@@ -2413,7 +2413,7 @@ func (e *Endpoint) connect(addr tcpip.FullAddress, handshake bool) tcpip.Error {
 			e.isConnectNotified = true
 			return nil
 		}
-		// Otherwise return that it's already connected.
+		// Otherwise, return that it's already connected.
 		return &tcpip.ErrAlreadyConnected{}
 	}
 

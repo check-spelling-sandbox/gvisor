@@ -422,7 +422,7 @@ func (l *LockSet) unlock(uid UniqueID, r LockRange) {
 			if len(value.Readers) == 1 {
 				remove = true
 			} else {
-				// Otherwise we need to remove this reader without
+				// Otherwise, we need to remove this reader without
 				// affecting any other segment's readers.  To do
 				// this, we need to make a copy of the Readers map
 				// and not add this uid.

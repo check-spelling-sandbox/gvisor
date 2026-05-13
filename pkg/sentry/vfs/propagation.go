@@ -337,7 +337,7 @@ func (vfs *VirtualFilesystem) propagateMount(ctx context.Context, dstMnt *Mount,
 // to fs/pnode.c:next_group() in Linux.
 func nextFollowerPeerGroup(mnt *Mount, start *Mount) *Mount {
 	for {
-		// If mnt has any followers, this loop returns that follower. Otherwise mnt
+		// If mnt has any followers, this loop returns that follower. Otherwise, mnt
 		// is updated until it is the last peer in its peer group. This has the
 		// effect of moving down the propagation tree until the bottommost follower.
 		// After that the loop moves across peers (if possible) to the last peer

@@ -164,7 +164,7 @@ func stringLayer(l Layer) string {
 		// Print byte slices as hex.
 		case v.Kind() == reflect.Slice && v.Type().Elem().Kind() == reflect.Uint8:
 			ret = append(ret, fmt.Sprintf("%s:\n%v", t.Name, hex.Dump(v.Bytes())))
-		// Otherwise just let Go decide how to print.
+		// Otherwise, just let Go decide how to print.
 		default:
 			ret = append(ret, fmt.Sprintf("%s:%v", t.Name, v))
 		}

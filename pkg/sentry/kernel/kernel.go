@@ -1207,7 +1207,7 @@ func (k *Kernel) CreateProcess(args CreateProcessArgs) (*ThreadGroup, ThreadID, 
 		// If File is set, take the File provided directly.
 		args.Filename = args.File.MappedName(ctx)
 	default:
-		// Otherwise look at Argv and see if the first argument is a valid path.
+		// Otherwise, look at Argv and see if the first argument is a valid path.
 		if len(args.Argv) == 0 {
 			return nil, 0, fmt.Errorf("no filename or command provided")
 		}

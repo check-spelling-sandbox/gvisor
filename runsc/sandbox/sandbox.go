@@ -919,7 +919,7 @@ func (s *Sandbox) createSandboxProcess(conf *config.Config, args *Args, startSyn
 		Setsid: true,
 	}
 
-	// Set Args[0] to make easier to spot the sandbox process. Otherwise it's
+	// Set Args[0] to make easier to spot the sandbox process. Otherwise, it's
 	// shown as `exe`.
 	cmd.Args[0] = "runsc-sandbox"
 

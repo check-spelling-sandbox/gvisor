@@ -314,7 +314,7 @@ TEST(SemaphoreTest, SemOpRemoveWithWaiter) {
     ASSERT_THAT(semctl(sem.release(), 0, IPC_RMID), SyscallSucceeds());
   });
 
-  // This must happen before IPC_RMID runs above. Otherwise it fails with EINVAL
+  // This must happen before IPC_RMID runs above. Otherwise, it fails with EINVAL
   // instead because the semaphore has already been removed.
   struct sembuf buf = {};
   buf.sem_op = -1;

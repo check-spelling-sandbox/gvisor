@@ -397,7 +397,7 @@ func (t *Task) ptraceTrapLocked(code int32) {
 
 // ptraceFreeze checks if t is in a ptraceStop. If so, it freezes the
 // ptraceStop, temporarily preventing it from being removed by a concurrent
-// Task.Kill, and returns true. Otherwise it returns false.
+// Task.Kill, and returns true. Otherwise, it returns false.
 //
 // Preconditions:
 //   - The TaskSet mutex must be locked.

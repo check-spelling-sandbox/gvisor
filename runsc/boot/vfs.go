@@ -206,7 +206,7 @@ func setupContainerVFS(ctx context.Context, info *containerInfo, mntr *container
 	procArgs.MountNamespace = mns
 
 	// If cgroups are mounted, then only check for the cgroup mounts per
-	// container. Otherwise the root cgroups will be enabled.
+	// container. Otherwise, the root cgroups will be enabled.
 	if mntr.cgroupsMounted {
 		cgroupRegistry := mntr.l.k.CgroupRegistry()
 		for _, ctrl := range kernel.CgroupCtrls {

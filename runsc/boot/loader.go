@@ -555,7 +555,7 @@ func New(args Args) (*Loader, error) {
 	}
 
 	// Make host FDs stable between invocations. Host FDs must map to the exact
-	// same number when the sandbox is restored. Otherwise the wrong FD will be
+	// same number when the sandbox is restored. Otherwise, the wrong FD will be
 	// used.
 	newfd := startingStdioFD
 
@@ -1120,7 +1120,7 @@ func (l *Loader) run() error {
 			panic("Signal-induced panic")
 		}
 
-		// Otherwise forward to root container.
+		// Otherwise, forward to root container.
 		deliveryMode := DeliverToProcess
 		if l.root.spec.Process.Terminal {
 			// Since we are running with a console, we should forward the signal to

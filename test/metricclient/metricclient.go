@@ -220,7 +220,7 @@ func (c *MetricClient) SpawnServer(ctx context.Context, baseConf *config.Config,
 	c.server.Stdin = devnull
 	c.server.Stdout = devnull
 	c.server.Stderr = devnull
-	// Set Args[0] to make easier to spot the sandbox process. Otherwise it's
+	// Set Args[0] to make easier to spot the sandbox process. Otherwise, it's
 	// shown as `exe`.
 	c.server.Args[0] = "runsc-metrics"
 	c.server.Args = append(c.server.Args, "metric-server")

@@ -1331,7 +1331,7 @@ func TestIPv6ReceiveControl(t *testing.T) {
 
 // truncatedPacket returns a PacketBuffer based on a truncated view. If view,
 // after truncation, is large enough to hold a network header, it makes part of
-// view the packet's NetworkHeader and the rest its Data. Otherwise all of view
+// view the packet's NetworkHeader and the rest its Data. Otherwise, all of view
 // becomes Data.
 func truncatedPacket(view []byte, trunc, netHdrLen int) *stack.PacketBuffer {
 	v := view[:len(view)-trunc]

@@ -172,7 +172,7 @@ func (fd *ControlFD) Node() *Node {
 // RemoveFromConn removes this control FD from its owning connection.
 //
 // Preconditions:
-//   - fd should not have been returned to the client. Otherwise the client can
+//   - fd should not have been returned to the client. Otherwise, the client can
 //     still refer to it.
 //   - server's rename mutex must at least be read locked.
 func (fd *ControlFD) RemoveFromConn() {

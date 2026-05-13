@@ -343,7 +343,7 @@ func collectProfilingMetrics(s *snapshots, valueFuncs []valueFunc, cheapStartTim
 			// Collect one last time before stopping.
 		}
 
-		// For small durations, just spin (and maybe yield). Otherwise sleep.
+		// For small durations, just spin (and maybe yield). Otherwise, sleep.
 		for {
 			const (
 				// When the next collection time is closer than `spinMaxNanos` away,

@@ -32,7 +32,7 @@ import (
 
 // existingPMAsLocked checks that pmas exist for all addresses in ar, and
 // support access of type (at, ignorePermissions). If so, it returns an
-// iterator to the pma containing ar.Start. Otherwise it returns a terminal
+// iterator to the pma containing ar.Start. Otherwise, it returns a terminal
 // iterator.
 //
 // Preconditions:
