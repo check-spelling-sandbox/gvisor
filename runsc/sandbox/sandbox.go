@@ -287,7 +287,7 @@ type Args struct {
 	// resolved to their final absolute location.
 	MountsFile *os.File
 
-	// Gcgroup is the cgroup that the sandbox is part of.
+	// Cgroup is the cgroup that the sandbox is part of.
 	Cgroup cgroup.Cgroup
 
 	// Attached indicates that the sandbox lifecycle is attached with the caller.
