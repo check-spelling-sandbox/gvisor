@@ -272,7 +272,7 @@ type pool struct {
 
 	// hashPool is the hash object pool. It cannot be embedded into pool
 	// itself as worker refers to it and that would stop pool from being
-	// GCed.
+	// GC'd.
 	hashPool *hashPool
 }
 
