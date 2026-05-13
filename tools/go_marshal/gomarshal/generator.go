@@ -500,7 +500,7 @@ func (g *Generator) Run() error {
 			// the list of imports we need to copy to the generated code.
 			for name := range impl.is {
 				if !g.imports.markUsed(name) {
-					panic(fmt.Sprintf("Generated code for '%s' referenced a non-existent import with local name '%s'. Either go-marshal needs to add an import to the generated file, or a package in an input source file has a package name differ from the final component of its path, which go-marshal doesn't know how to detect; use an import alias to work around this limitation.", impl.typeName(), name))
+					panic(fmt.Sprintf("Generated code for '%s' referenced a nonexistent import with local name '%s'. Either go-marshal needs to add an import to the generated file, or a package in an input source file has a package name differ from the final component of its path, which go-marshal doesn't know how to detect; use an import alias to work around this limitation.", impl.typeName(), name))
 				}
 			}
 			// Do not generate tests for dynamic types because they inherently

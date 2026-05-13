@@ -2140,7 +2140,7 @@ func TestMultiContainerGoferKilled(t *testing.T) {
 	// Wait until sandbox stops. waitForProcessList will loop until sandbox exits
 	// and RPC errors out.
 	impossiblePL := []*control.Process{
-		newProcessBuilder().Cmd("non-existent-process").Process(),
+		newProcessBuilder().Cmd("nonexistent-process").Process(),
 	}
 	if err := waitForProcessList(c, impossiblePL); err == nil {
 		t.Fatalf("Sandbox was not killed after gofer death")

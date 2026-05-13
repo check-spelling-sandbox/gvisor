@@ -60,7 +60,7 @@ var dindMountinfo = `
 
 func TestUninstallEnoent(t *testing.T) {
 	c := cgroupV1{
-		// Use a non-existent name.
+		// Use a nonexistent name.
 		Name: "runsc-test-uninstall-656e6f656e740a",
 		Own:  make(map[string]bool),
 	}

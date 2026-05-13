@@ -3105,7 +3105,7 @@ func TestLoopCheckOnRegisterAndUnregister(t *testing.T) {
 		shouldErr bool
 	}{
 		{
-			tname: "jump to non-existent chain",
+			tname: "jump to nonexistent chain",
 			chains: map[string]*Chain{
 				"base_chain": {
 					baseChainInfo: arbitraryInfoPolicyAccept,
@@ -3117,7 +3117,7 @@ func TestLoopCheckOnRegisterAndUnregister(t *testing.T) {
 			shouldErr: true,
 		},
 		{
-			tname: "goto to non-existent chain",
+			tname: "goto to nonexistent chain",
 			chains: map[string]*Chain{
 				"base_chain": {
 					baseChainInfo: arbitraryInfoPolicyAccept,

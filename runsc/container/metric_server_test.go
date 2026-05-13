@@ -794,10 +794,10 @@ func TestMetricServerToleratesNoRootDirectory(t *testing.T) {
 	shortCtx, shortCtxCancel := context.WithTimeout(te.testCtx, time.Second)
 	defer shortCtxCancel()
 	if err := te.client.SpawnServer(shortCtx, te.sleepConf, append([]string{"--allow-unknown-root=false"}, te.serverExtraArgs...)...); err == nil {
-		t.Fatalf("Metric server was successfully able to be spawned despite a non-existent root directory")
+		t.Fatalf("Metric server was successfully able to be spawned despite a nonexistent root directory")
 	}
 	if err := te.client.SpawnServer(te.testCtx, te.sleepConf, append([]string{"--allow-unknown-root=true"}, te.serverExtraArgs...)...); err != nil {
-		t.Errorf("Metric server was not able to be spawned despite being configured to tolerate a non-existent root directory: %v", err)
+		t.Errorf("Metric server was not able to be spawned despite being configured to tolerate a nonexistent root directory: %v", err)
 	}
 }
 

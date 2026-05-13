@@ -274,7 +274,7 @@ TEST(KeysTest, GetKeyringThatDoesNotExist) {
       break;
     }
   }
-  EXPECT_TRUE(found_non_existent_key) << "Did not find any non-existent key ID";
+  EXPECT_TRUE(found_non_existent_key) << "Did not find any nonexistent key ID";
 }
 
 TEST(KeysTest, DescribeKeyWithNullBuffer) {

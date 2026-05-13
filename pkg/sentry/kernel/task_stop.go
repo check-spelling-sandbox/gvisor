@@ -131,7 +131,7 @@ func (t *Task) beginInternalStopLocked(s TaskStop) {
 //   - The task must be in an internal stop (i.e. t.stop != nil).
 func (t *Task) endInternalStopLocked() {
 	if t.stop == nil {
-		panic("Attempting to leave non-existent internal stop")
+		panic("Attempting to leave nonexistent internal stop")
 	}
 	t.Debugf("Leaving internal stop %#v", t.stop)
 	t.stop = nil

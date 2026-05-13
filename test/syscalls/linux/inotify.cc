@@ -1671,7 +1671,7 @@ TEST(Inotify, AddWatchOnInvalidPathFails) {
   const FileDescriptor fd =
       ASSERT_NO_ERRNO_AND_VALUE(InotifyInit1(IN_NONBLOCK));
 
-  // Non-existent path.
+  // Nonexistent path.
   EXPECT_THAT(
       inotify_add_watch(fd.get(), nonexistent.path().c_str(), IN_CREATE),
       SyscallFailsWithErrno(ENOENT));
