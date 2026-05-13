@@ -889,7 +889,7 @@ func (p *Protocol) newRule(nft *nftables.NFTables, st *stack.Stack, attrs map[ui
 		return err
 	}
 
-	// Once we have a at least one rule registered on a base chain, nftables can
+	// Once we have at least one rule registered on a base chain, nftables can
 	// be called to potentially filter the packet.
 	st.SetNFTablesConfigured(chain.IsBaseChain())
 
