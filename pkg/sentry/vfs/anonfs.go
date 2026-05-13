@@ -66,7 +66,7 @@ func (anonFilesystemType) Name() string {
 	return "none"
 }
 
-// Release implemenents FilesystemType.Release.
+// Release implements FilesystemType.Release.
 func (anonFilesystemType) Release(ctx context.Context) {}
 
 // anonFilesystem is the implementation of FilesystemImpl that backs
