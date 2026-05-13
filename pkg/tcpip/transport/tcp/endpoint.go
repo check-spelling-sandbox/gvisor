@@ -658,7 +658,7 @@ func (e *Endpoint) LockUser() {
 	const iterations = 5
 	for i := 0; i < iterations; i++ {
 		// Try first if the sock is locked then check if it's owned
-		// by another user goroutine if not then we spin, otherwise
+		// by another user goroutine if not then we spin; otherwise,
 		// we just go to sleep on the Lock() and wait.
 		if !e.TryLock() {
 			// If socket is owned by the user then just go to sleep
@@ -678,7 +678,7 @@ func (e *Endpoint) LockUser() {
 
 	for i := 0; i < iterations; i++ {
 		// Try first if the sock is locked then check if it's owned
-		// by another user goroutine if not then we spin, otherwise
+		// by another user goroutine if not then we spin; otherwise,
 		// we just go to sleep on the Lock() and wait.
 		if !e.TryLock() {
 			// If socket is owned by the user then just go to sleep
