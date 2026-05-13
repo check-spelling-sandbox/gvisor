@@ -197,7 +197,7 @@ func (c *MetricClient) SpawnServer(ctx context.Context, baseConf *config.Config,
 		RandomizationFactor: 0.1,
 		Clock:               backoff.SystemClock,
 	}, bindCtx)
-	// Overriden metric server address with the address this metric client is configured to use.
+	// Overridden metric server address with the address this metric client is configured to use.
 	// This should be the same but may contain string replacements (e.g. "%ID%").
 	overriddenConf := *baseConf
 	overriddenConf.MetricServer = c.addr
