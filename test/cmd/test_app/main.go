@@ -238,7 +238,7 @@ func (*uds) Name() string {
 
 // Synopsis implements subcommands.Command.Synopsys.
 func (*uds) Synopsis() string {
-	return "creates unix domain socket client and server. Client sends a contant flow of sequential numbers. Server prints them to --file"
+	return "creates unix domain socket client and server. Client sends a constant flow of sequential numbers. Server prints them to --file"
 }
 
 // Usage implements subcommands.Command.Usage.
