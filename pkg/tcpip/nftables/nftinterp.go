@@ -1078,7 +1078,7 @@ func parseVerdict(tokens []string, lnIdx int, tkIdx int) (int, stack.NFVerdict, 
 	return tkIdx, v, nil
 }
 
-// parseHexData parses little endian hexadecimal data from the given token,
+// parseHexData parses little-endian hexadecimal data from the given token,
 // converts to big-endian, and returns the index of the next token to process.
 func parseHexData(tokens []string, lnIdx int, tkIdx int) (int, []byte, *syserr.AnnotatedError) {
 	var bytes []byte
@@ -1092,7 +1092,7 @@ func parseHexData(tokens []string, lnIdx int, tkIdx int) (int, []byte, *syserr.A
 			return 0, nil, syserr.NewAnnotatedError(syserr.ErrInvalidArgument, fmt.Sprintf("invalid hexadecimal data: '%s'", tokens[tkIdx]))
 		}
 
-		// Decodes the little endian hex string into bytes
+		// Decodes the little-endian hex string into bytes
 		bytes4, err := hex.DecodeString(tokens[tkIdx][2:])
 		if err != nil {
 			return 0, nil, syserr.NewAnnotatedError(syserr.ErrInvalidArgument, fmt.Sprintf("could not decode hexadecimal data: '%s'", tokens[tkIdx]))
