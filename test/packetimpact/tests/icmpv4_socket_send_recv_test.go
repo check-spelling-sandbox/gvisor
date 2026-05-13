@@ -100,7 +100,7 @@ func (test *icmpV4Test) Send(t *testing.T, dut testbench.DUT, bindTo, sendTo net
 
 	expectNetworkUnreachable := true
 	// We don't expect ENETUNREACH if any of the following is true:
-	// 1. bindTo is specfied.
+	// 1. bindTo is specified.
 	if !bindTo.Equal(net.IPv4zero) {
 		expectNetworkUnreachable = false
 	}
