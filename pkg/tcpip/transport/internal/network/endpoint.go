@@ -731,7 +731,7 @@ func (e *Endpoint) ConnectAndThen(addr tcpip.FullAddress, f func(netProto tcpip.
 	return nil
 }
 
-// Shutdown shutsdown the endpoint.
+// Shutdown shuts down the endpoint.
 func (e *Endpoint) Shutdown() tcpip.Error {
 	e.mu.Lock()
 	defer e.mu.Unlock()
