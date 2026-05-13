@@ -181,7 +181,7 @@ framework. The test bench framework is based on three basic utilities:
 To keep the interface to the DUT consistent and easy-to-use, each POSIX command
 supported by the posix_server is wrapped in functions with signatures similar to
 the ones in the [Go unix package](https://godoc.org/golang.org/x/sys/unix). This
-way all the details of endianess and (un)marshalling of go structs such as
+way all the details of endianness and (un)marshalling of go structs such as
 [unix.Timeval](https://godoc.org/golang.org/x/sys/unix#Timeval) is handled in
 one place. This also makes it straight-forward to convert tests that use `unix.`
 or `syscall.` calls to `dut.` calls.
