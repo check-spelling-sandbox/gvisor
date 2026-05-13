@@ -2037,7 +2037,7 @@ func (k *Kernel) Release() {
 	k.RootNetworkNamespace().DecRef(ctx)
 	k.rootIPCNamespace.DecRef(ctx)
 	k.rootUTSNamespace.DecRef(ctx)
-	k.cleaupDevGofers()
+	k.cleanupDevGofers()
 	k.mf.Destroy()
 	k.RootPIDNamespace().DecRef(ctx)
 }
@@ -2180,7 +2180,7 @@ func (k *Kernel) GetDevGoferClient(contName string) *devutil.GoferClient {
 	return k.devGofers[contName]
 }
 
-func (k *Kernel) cleaupDevGofers() {
+func (k *Kernel) cleanupDevGofers() {
 	k.devGofersMu.Lock()
 	defer k.devGofersMu.Unlock()
 	for _, client := range k.devGofers {
