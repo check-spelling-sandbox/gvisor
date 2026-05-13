@@ -133,7 +133,7 @@ type worker struct {
 	output   chan result
 
 	// scratch is a temporary buffer used for marshalling. This is declared
-	// unfront here to avoid reallocation.
+	// upfront here to avoid reallocation.
 	scratch [4]byte
 }
 
@@ -371,7 +371,7 @@ type Reader struct {
 	in io.ReadCloser
 
 	// scratch is a temporary buffer used for marshalling. This is declared
-	// unfront here to avoid reallocation.
+	// upfront here to avoid reallocation.
 	scratch [4]byte
 }
 
