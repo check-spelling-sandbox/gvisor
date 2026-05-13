@@ -462,7 +462,7 @@ TEST_P(UdpSocketTest, ReceiveAfterDisconnect) {
   ASSERT_NO_ERRNO(BindLoopback());
 
   for (int i = 0; i < 2; i++) {
-    // Connet sock_ to bound address.
+    // Connect sock_ to bound address.
     ASSERT_THAT(connect(sock_.get(), bind_addr_, addrlen_), SyscallSucceeds());
 
     struct sockaddr_storage addr;
@@ -676,7 +676,7 @@ TEST_P(UdpSocketTest, DisconnectAfterConnectWithoutBind) {
   ASSERT_NO_FATAL_FAILURE(ConnectThenDisconnect(sock_, bind_addr_, addrlen_));
 }
 
-TEST_P(UdpSocketTest, BindToAnyConnnectToLocalhost) {
+TEST_P(UdpSocketTest, BindToAnyConnectToLocalhost) {
   ASSERT_NO_ERRNO(BindAny());
 
   struct sockaddr_storage addr_storage = InetLoopbackAddr();
