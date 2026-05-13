@@ -1016,7 +1016,7 @@ TEST(SemaphoreTest, SemInfo) {
   // Apart from semapahores that are not created by the test, we can't determine
   // the exact number of semaphore sets and semaphores, as a result, semusz and
   // semaem range from 0 to a random number. Since the numbers are always
-  // non-negative, the test will not check the reslts of semusz and semaem.
+  // non-negative, the test will not check the results of semusz and semaem.
   EXPECT_EQ(info.semvmx, kSemVmx);
 }
 
