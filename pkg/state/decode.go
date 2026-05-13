@@ -24,7 +24,7 @@ import (
 	"gvisor.dev/gvisor/pkg/state/wire"
 )
 
-// internalCallback is a interface called on object completion.
+// internalCallback is an interface called on object completion.
 //
 // There are two implementations: objectDecodeState & userCallback.
 type internalCallback interface {
@@ -510,7 +510,7 @@ func isComplexEq(x complex128, y complex128) bool {
 	return isFloatEq(real(x), real(y)) && isFloatEq(imag(x), imag(y))
 }
 
-// decodeObject decodes a object value.
+// decodeObject decodes an object value.
 func (ds *decodeState) decodeObject(ods *objectDecodeState, obj reflect.Value, encoded wire.Object) {
 	switch x := encoded.(type) {
 	case wire.Nil: // Fast path: first.

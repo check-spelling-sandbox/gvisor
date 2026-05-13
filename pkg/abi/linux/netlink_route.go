@@ -259,7 +259,7 @@ const (
 	// as broadcast, and sent as broadcast).
 	RTN_BROADCAST = 3
 
-	// RTN_ANYCAST represents a anycast route (Traffic is accepted locally as
+	// RTN_ANYCAST represents an anycast route (Traffic is accepted locally as
 	// broadcast but sent as unicast).
 	RTN_ANYCAST = 6
 

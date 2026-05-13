@@ -27,7 +27,7 @@ type Iperf struct {
 	Parallel int // Number of parallel threads.
 }
 
-// MakeCmd returns a iperf client command.
+// MakeCmd returns an iperf client command.
 func (i *Iperf) MakeCmd(host string, port int) []string {
 	cmd := []string{"iperf"}
 	cmd = append(cmd, "--format", "K") // Output in KBytes.

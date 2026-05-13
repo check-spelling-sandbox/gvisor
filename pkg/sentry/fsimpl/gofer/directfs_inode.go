@@ -81,7 +81,7 @@ func (fs *filesystem) getDirectfsRootDentry(ctx context.Context, rootHostFD int,
 	return dentry, nil
 }
 
-// directfsInode is a host inode implementation. It represents a inode
+// directfsInode is a host inode implementation. It represents an inode
 // backed by a host file descriptor. All operations are directly performed on
 // the host. A gofer is only involved for some operations on the mount point
 // dentry (when dentry.parent = nil). We are forced to fall back to the gofer

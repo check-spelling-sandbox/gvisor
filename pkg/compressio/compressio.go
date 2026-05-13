@@ -81,7 +81,7 @@ type chunk struct {
 	// uncompressed is the uncompressed data.
 	//
 	// This is not returned to the bufPool automatically, since it may
-	// correspond to a inline slice (provided directly to Read or Write).
+	// correspond to an inline slice (provided directly to Read or Write).
 	uncompressed *bytes.Buffer
 
 	// The current hash object. Only used in compress mode.

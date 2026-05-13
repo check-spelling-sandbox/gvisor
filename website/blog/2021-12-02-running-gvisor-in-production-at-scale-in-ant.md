@@ -59,7 +59,7 @@ to the vDSO, and aim to push these improvements upstream when possible.
 ### Path 2: Sentry contained
 
 Most syscalls, e.g., <code>clone(2)</code>, are implemented in Sentry. They are
-some basic abstractions of a operating system, such as process/thread lifecycle,
+some basic abstractions of an operating system, such as process/thread lifecycle,
 scheduling, IPC, memory management, etc. These syscalls and all below suffer
 from a structural cost of syscall interception. The overhead is about 800ns
 while that of the native syscalls is about 70ns. We'll dig it further below.
@@ -309,7 +309,7 @@ Now we can get clear information like:
     allocated objects. And we can consider adjust
     [GC percent](https://golang.org/pkg/runtime/debug/#SetGCPercent), 100% by
     default, to sacrifice memory for less CPU utilization. We once found that
-    allocating a object > 32 KB also triggers GC, referring to
+    allocating an object > 32 KB also triggers GC, referring to
     [this](https://github.com/google/gvisor/commit/f697d1a33e4e7cefb4164ec977c38ccc2a228099).
 
 3.  Percentage of time spent in GR3 app and Sentry: We can determine if it

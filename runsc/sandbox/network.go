@@ -499,7 +499,7 @@ func createSocket(iface net.Interface, ifaceLink netlink.Link, enableGSO bool) (
 
 	// Use SO_RCVBUFFORCE/SO_SNDBUFFORCE because on linux the receive/send buffer
 	// for an AF_PACKET socket is capped by "net.core.rmem_max/wmem_max".
-	// wmem_max/rmem_max default to a unusually low value of 208KB. This is too
+	// wmem_max/rmem_max default to an unusually low value of 208KB. This is too
 	// low for gVisor to be able to receive packets at high throughputs without
 	// incurring packet drops.
 	const bufSize = 4 << 20 // 4MB.

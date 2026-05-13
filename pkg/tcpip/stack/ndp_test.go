@@ -1683,7 +1683,7 @@ func TestOffLinkRouteDiscovery(t *testing.T) {
 				e.InjectInbound(header.IPv6ProtocolNumber, test.ra(t, llAddr2, l2LifetimeSeconds, header.MediumRoutePreference))
 				select {
 				case <-ndpDisp.offLinkRouteC:
-					t.Fatal("should not receive a off-link route event when updating lifetimes for known routers")
+					t.Fatal("should not receive an off-link route event when updating lifetimes for known routers")
 				default:
 				}
 

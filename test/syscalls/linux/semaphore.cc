@@ -959,7 +959,7 @@ TEST(SemaphoreTest, SemInfo) {
   EXPECT_EQ(info.semopm, kSemOpm);
   EXPECT_EQ(info.semume, kSemUme);
   // There could be semaphores existing in the system during the test, which
-  // prevents the test from getting a exact number, but the test could expect at
+  // prevents the test from getting an exact number, but the test could expect at
   // least the number of semaphores it creates in the beginning of the test.
   EXPECT_GE(info.semusz, sem_ids.size());
   EXPECT_EQ(info.semvmx, kSemVmx);

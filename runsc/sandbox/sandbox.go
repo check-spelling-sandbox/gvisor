@@ -294,7 +294,7 @@ type Args struct {
 	// If the caller exits, the sandbox should exit too.
 	Attached bool
 
-	// SinkFiles is the an ordered array of files to be used by seccheck sinks
+	// SinkFiles is an ordered array of files to be used by seccheck sinks
 	// configured from the --pod-init-config file.
 	SinkFiles []*os.File
 

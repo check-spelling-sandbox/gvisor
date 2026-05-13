@@ -63,7 +63,7 @@ func (fs *filesystem) handleAnameLisafs(ctx context.Context, rootInode lisafs.In
 	}
 }
 
-// lisafsInode is a gofer inode implementation. It represents a inode backed
+// lisafsInode is a gofer inode implementation. It represents an inode backed
 // by a lisafs connection.
 //
 // +stateify savable

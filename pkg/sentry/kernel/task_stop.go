@@ -27,7 +27,7 @@ package kernel
 //		vfork() syscall stopping the calling task until the child task releases its
 //		MM). In this case, calling Task.interrupt is both unnecessary (the task
 //		goroutine obviously cannot be blocked in Task.block or executing application
-//		code) and undesirable (as it may spuriously interrupt a in-progress
+//		code) and undesirable (as it may spuriously interrupt an in-progress
 //		syscall).
 //
 // Beginning internal stops in this case is implemented by

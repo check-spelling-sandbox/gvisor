@@ -381,7 +381,7 @@ TEST_F(FlockTest, TestDupFdUpgrade) {
 }
 
 TEST_F(FlockTest, TestDupFdDowngrade) {
-  // This test will verify that a exclusive lock is downgradable via a dupped
+  // This test will verify that an exclusive lock is downgradable via a dupped
   // file descriptor, if the FD wasn't dupped this would fail.
   ASSERT_THAT(flock(test_file_fd_.get(), LOCK_EX | LOCK_NB),
               SyscallSucceedsWithValue(0));

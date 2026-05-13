@@ -578,7 +578,7 @@ type Endpoint struct {
 	// ops is used to get socket level options.
 	ops tcpip.SocketOptions
 
-	// lastOutOfWindowAckTime is the time at which the an ACK was sent in response
+	// lastOutOfWindowAckTime is the time at which an ACK was sent in response
 	// to an out of window segment being received by this endpoint.
 	lastOutOfWindowAckTime tcpip.MonotonicTime
 
