@@ -53,7 +53,7 @@ RUN sed -i '/setns/ s/CLONE_NEWUSER[[:space:]]*|[[:space:]]*//g' pidfd_setns_tes
 RUN sed -i '/TEST_F(current_nsset, no_foul_play)/,/^}/ s/^/\/\//' pidfd_setns_test.c
 
 # Drop the test_pidfd_send_signal_recycled_pid_fail() test, for it takes long enough
-# to occassionally breach bazel's 15min timeout for "large" tests.
+# to occasionally breach bazel's 15min timeout for "large" tests.
 # If seeking to run this test, comment the line below and uncomment the 
 # PIDFD_MAX_DEFAULT-altering line that follows and also supply "-o 500" to the 
 # run_kselftest.sh command at the end of this file.
